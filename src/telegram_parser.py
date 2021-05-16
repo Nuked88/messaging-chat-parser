@@ -35,11 +35,11 @@ def stop_word_checker(actor, invalid_lines, text):
 
 def messages_parser(personal_chat, telegram_data, session_info: dict):
     datetime_format = session_info['time_format']
-    usr_id = telegram_data['personal_information']['user_id']
+    usr_id = telegram_data['id']
     usr_messages = []
     invalid_lines = []
 
-    for chat in tqdm(telegram_data['chats']['list']):
+    for chat in tqdm(telegram_data['messages']):
         if chat['type'] == 'saved_messages' and not personal_chat:
             continue  # Skip personal messages
         if chat['type'] != 'personal_chat':
