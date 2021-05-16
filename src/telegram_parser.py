@@ -46,7 +46,7 @@ def messages_parser(personal_chat, telegram_data, session_info: dict):
             continue  # Skip everything but 1 to 1 messages
         logging.info(f"Processing chat with `{chat.get('name', 'personal messages')}`")
         t_last = None
-        for message in chat['messages']:
+        for message in chat:
             if message['type'] == "message" and message['text']:
                 t_current = datetime.strptime(message['date'], datetime_format)
                 split_in_sessions(t_current,
